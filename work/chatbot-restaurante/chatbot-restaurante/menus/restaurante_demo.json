@@ -1,0 +1,24 @@
+{
+  "Entradas": [
+    {"nombre": "Empanada de pino", "precio": 2500, "descripcion": "Tradicional chilena"},
+    {"nombre": "Empanada de queso", "precio": 2200, "descripcion": "Queso derretido"},
+    {"nombre": "Tabla de quesos", "precio": 8900, "descripcion": "3 quesos con mermelada"}
+  ],
+  "Platos de fondo": [
+    {"nombre": "Lomo a lo pobre", "precio": 12900, "descripcion": "Con papas fritas, huevo y cebolla"},
+    {"nombre": "Pollo asado", "precio": 10900, "descripcion": "Con ensalada y papas"},
+    {"nombre": "Pasta primavera", "precio": 9500, "descripcion": "Vegetariana, salsa de tomate fresco"},
+    {"nombre": "Cazuela de vacuno", "precio": 11500, "descripcion": "Tradicional chilena"}
+  ],
+  "Postres": [
+    {"nombre": "Leche asada", "precio": 3500},
+    {"nombre": "Torta de chocolate", "precio": 4200},
+    {"nombre": "Fruta de estación", "precio": 2900}
+  ],
+  "Bebidas": [
+    {"nombre": "Agua mineral", "precio": 1500},
+    {"nombre": "Bebida", "precio": 2000},
+    {"nombre": "Jugo natural", "precio": 3200},
+    {"nombre": "Cerveza", "precio": 3500}
+  ]
+}

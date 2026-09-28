@@ -1,0 +1,6 @@
+frontend/dev-config.js
+backend/.env
+*.sqlite3
+*.db
+.pytest_cache/
+__pycache__/

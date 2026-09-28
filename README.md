@@ -19,13 +19,11 @@ Prototipo web responsive para validar el núcleo del flujo del PRD:
 
 ## Experiencia visual
 
-La interfaz sigue el sistema visual de salón premium definido en `ui.spec.md`: sidebar persistente, dashboard de operación diaria, agenda visual, distribución de dinero, rendimiento del equipo, pendientes, caja resumida y diseño móvil con navegación inferior. Todas sus métricas se derivan del estado real guardado en el navegador.
-
-Los datos se guardan solamente en el `localStorage` del navegador. No incluye autenticación, auditoría de servidor ni persistencia de producción todavía.
+La interfaz sigue el sistema visual de salón premium definido en `ui.spec.md`: sidebar persistente, dashboard de operación diaria, agenda visual, distribución de dinero, rendimiento del equipo, pendientes, caja resumida y diseño móvil con navegación inferior. Las atenciones, cobros, caja y agenda ya integrados usan FastAPI y SQLite como fuente de verdad. Partes no migradas de la demo conservan estado local temporal y no deben considerarse respaldo ni persistencia de producción.
 
 ## Ejecutar localmente
 
-No abra `index.html` mediante `file://`. Abra dos terminales desde la raíz del proyecto (`anan`).
+No abra `frontend/index.html` mediante `file://`. Abra dos terminales desde la raíz del proyecto (`anan`).
 
 Terminal 1 — backend FastAPI:
 
@@ -38,17 +36,18 @@ python -m uvicorn app.main:app --reload
 Terminal 2 — frontend HTTP:
 
 ```powershell
+cd .\frontend
 npx serve . -l 5173
 ```
 
 Abra la URL mostrada por `serve`, usando `http://127.0.0.1:5173`. El frontend usa una única configuración local en `app.js`: API `http://127.0.0.1:8000` y estudio `development-studio`. Si el backend no está iniciado, mostrará un mensaje de conexión y no guardará nuevas atenciones localmente.
 
-Para conectar el frontend protegido en desarrollo, copia `dev-config.example.js` como `dev-config.js`, pega el `TOKEN` temporal que imprime `python -m app.dev` y sirve nuevamente el frontend. `dev-config.js` está ignorado por Git y no debe crearse en producción.
+Para conectar el frontend protegido en desarrollo, copia `frontend/dev-config.example.js` como `frontend/dev-config.js`, pega el `TOKEN` temporal que imprime `python -m app.dev` y sirve nuevamente el frontend. `frontend/dev-config.js` está ignorado por Git y no debe crearse en producción.
 
 Verificación de sintaxis del frontend:
 
 ```powershell
-node --check app.js
+node --check frontend/app.js
 ```
 
 Pruebas de backend, desde `backend`:
@@ -62,3 +61,7 @@ python -m pytest
 Todos los importes se guardan como enteros CLP. La comisión utiliza el redondeo requerido en la especificación:
 
 `floor((precio_final × porcentaje_en_puntos_base + 5000) / 10000)`
+
+## Piloto privado
+
+Antes de usar la aplicación con un estudio real, revisa [docs/STAGING_PILOT.md](docs/STAGING_PILOT.md). El repositorio no configura un proveedor ni almacenamiento persistente: hasta que se configure un staging privado con HTTPS, SQLite persistente y respaldos privados diarios, el piloto permanece bloqueado. La operación de práctica se explica en [docs/PILOT_GUIDE_OWNER.md](docs/PILOT_GUIDE_OWNER.md).

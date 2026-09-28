@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estética · Operación diaria</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="beauty-dashboard.css" />
+    <link rel="stylesheet" href="beauty-details.css" />
+    <link rel="stylesheet" href="beauty-polish.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Ir al contenido principal</a>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Inicio">estética<span>•</span></a>
+      <nav aria-label="Navegación principal">
+        <a class="active" href="#atenciones">Atenciones</a>
+        <a href="#profesionales">Profesionales</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#reportes">Reportes</a>
+      </nav>
+      <span class="workspace-status"><i></i> Administración</span>
+      <button id="backupData" class="text-button" type="button">Respaldo del servidor</button>
+      <button id="resetData" class="text-button" type="button">Restablecer demo</button>
+    </header>
+    <aside class="salon-sidebar" aria-label="Navegación de la aplicación">
+      <a class="sidebar-brand" href="#inicio">estética<span>•</span></a>
+      <nav class="sidebar-nav">
+        <a class="selected" href="#inicio">⌂ <span>Inicio</span></a>
+        <a href="#agenda">▣ <span>Agenda</span></a>
+        <a href="#atenciones">◇ <span>Atenciones</span></a>
+        <a href="#clientes-panel">♧ <span>Clientes</span></a>
+        <a href="#profesionales">♙ <span>Profesionales</span></a>
+        <a href="#servicios">⌑ <span>Servicios</span></a>
+        <a href="#caja">▱ <span>Caja</span></a>
+        <a href="#reportes">▥ <span>Reportes</span></a>
+      </nav>
+      <a class="sidebar-settings" href="#profesionales">⚙ <span>Configuración</span></a>
+      <div class="sidebar-user"><span class="user-avatar">A</span><span><b>Andrea</b><small>Administración</small></span><span>›</span></div>
+    </aside>
+    <nav class="mobile-nav" aria-label="Navegación móvil">
+      <a class="selected" href="#inicio"><span>⌂</span>Inicio</a>
+      <a href="#agenda"><span>▣</span>Agenda</a>
+      <a href="#atenciones"><span>◇</span>Atenciones</a>
+      <a href="#caja"><span>▱</span>Caja</a>
+      <a href="#reportes"><span>▥</span>Reportes</a>
+    </nav>
+
+    <main id="main-content">
+      <section class="command-center" id="dashboard" aria-labelledby="dashboard-title">
+        <header class="dashboard-header">
+          <div><p class="eyebrow">OPERACIÓN DIARIA</p><h1 id="dashboard-title">Buenos días, Andrea <span>✦</span></h1><p>Tu salón empieza tranquilo hoy.</p></div>
+          <div class="dashboard-actions"><span id="dashboardDate"></span><button id="dashboardRegister" class="primary" type="button">＋ Registrar atención</button></div>
+        </header>
+        <div class="dashboard-kpis">
+          <article class="kpi-primary"><span class="kpi-icon">♧</span><div><small>Ventas de hoy</small><strong id="dashSales">$0</strong><em id="dashSalesNote">Registra tu primera atención</em></div></article>
+          <article><span class="kpi-icon">♙</span><div><small>Comisiones devengadas</small><strong id="dashCommissions">$0</strong></div></article>
+          <article><span class="kpi-icon champagne">⌂</span><div><small>Participación del local</small><strong id="dashStudio">$0</strong></div></article>
+          <article><span class="kpi-icon">◌</span><div><small>Atenciones</small><strong id="dashServices">0</strong><em id="dashAppointments">de 0 programadas</em></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="dash-card timeline-card"><header><div><h2>Tu día en el salón</h2><p id="timelineSubtitle">Revisa las próximas atenciones.</p></div><a href="#agenda">Ver agenda →</a></header><div id="timelineRows" class="timeline-rows" aria-label="Agenda visual de hoy"></div></section>
+          <section class="dash-card money-card"><header><h2>¿A dónde fue el dinero?</h2></header><div class="donut-layout"><div id="moneyDonut" class="money-donut"><div><strong id="donutTotal">$0</strong><small>Ventas totales</small></div></div><ul id="moneyLegend" class="money-legend"></ul></div></section>
+          <section class="dash-card services-card"><header><h2>Servicios más vendidos</h2><a href="#reportes">Ver todos →</a></header><div id="topServices" class="rank-list"></div></section>
+          <section class="dash-card weekly-card"><header><h2>Resumen semanal</h2><a href="#reportes">Ver reporte →</a></header><div id="weekBars" class="week-bars" aria-label="Ventas por día de la semana"></div></section>
+          <section class="dash-card team-card"><header><h2>Rendimiento del equipo</h2><a href="#profesionales">Ver equipo →</a></header><div id="teamPerformance" class="team-list"></div></section>
+          <section class="dash-card pending-card"><header><h2>Pendientes de hoy <span id="pendingBadge" class="badge">0</span></h2></header><ul id="pendingActions" class="pending-list"></ul></section>
+          <section class="dash-card cash-card"><header><div><h2>Caja del día</h2><span id="dashCashStatus" class="status-pill">Día abierto</span></div><a href="#caja">Ver movimientos →</a></header><div class="cash-mini"><span><small>Efectivo esperado</small><strong id="dashExpectedCash">$0</strong></span><span><small>Efectivo contado</small><strong id="dashCountedCash">—</strong></span><span><small>Diferencia</small><strong id="dashCashDiff">—</strong></span><span><small>Resultado operativo</small><strong id="dashOperatingResult">$0</strong></span></div><button id="dashCloseDay" class="primary" type="button">Cerrar día</button></section>
+        </div>
+      </section>
+      <section class="intro" id="inicio">
+        <p class="eyebrow">OPERACIÓN DIARIA</p>
+        <div class="title-row">
+          <div>
+            <h1>Atenciones de hoy</h1>
+            <p id="todayLabel" class="muted"></p>
+          </div>
+          <div class="title-actions"><span class="local-status">Datos guardados en este dispositivo</span><button id="showServiceForm" class="primary" type="button">+ Registrar atención</button></div>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Resumen del día">
+        <article><span>Ventas confirmadas</span><strong id="totalSales">$0</strong></article>
+        <article><span>Comisiones devengadas</span><strong id="totalCommissions">$0</strong></article>
+        <article><span>Participación del local</span><strong id="totalStudio">$0</strong></article>
+        <article><span>Atenciones</span><strong id="totalServices">0</strong></article>
+      </section>
+
+      <section class="panel" id="atenciones">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">REGISTROS CONFIRMADOS</p>
+            <h2>Detalle de atenciones</h2>
+          </div>
+          <p class="muted panel-note">El reparto se congela al confirmar.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Servicio</th><th>Profesional</th><th>Precio final</th><th>Cobrado / pendiente</th><th>Comisión</th><th>Local</th><th></th></tr></thead>
+            <tbody id="servicesTable"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="empty-state">
+          <span class="empty-icon">✦</span>
+          <p>Aún no hay atenciones confirmadas hoy.</p>
+          <button id="emptyRegister" class="secondary" type="button">Registrar la primera</button>
+        </div>
+      </section>
+
+      <section class="panel" id="caja" style="margin-top:25px">
+        <div class="panel-heading">
+          <div><p class="eyebrow">CAJA DEL DÍA</p><h2>Movimientos y cierre</h2></div>
+          <div style="display:flex;gap:8px;align-items:center"><span id="closureStatus" class="small">Día abierto</span><button id="closureAction" class="primary" type="button">Cerrar día</button><button id="showMovementForm" class="secondary" type="button">+ Registrar salida</button></div>
+        </div>
+        <div class="metrics cash-metrics">
+          <article><span>Efectivo esperado</span><strong id="expectedCash">$0</strong></article>
+          <article><span>Efectivo contado</span><strong id="countedCashMetric">—</strong></article>
+          <article><span>Diferencia</span><strong id="cashDifference">—</strong></article>
+          <article><span>Resultado operativo</span><strong id="operatingResult">$0</strong></article>
+        </div>
+        <div class="inline-form" style="margin-bottom:20px">
+          <label>Saldo inicial efectivo<input id="openingCash" type="number" min="0" step="1" value="0" /></label>
+          <label>Efectivo contado<input id="countedCash" type="number" min="0" step="1" placeholder="Opcional" /></label>
+          <button id="saveCashCount" class="secondary" type="button">Actualizar conteo</button>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>Tipo</th><th>Descripción</th><th>Medio</th><th>Estado</th><th>Monto</th></tr></thead><tbody id="movementsTable"></tbody></table></div>
+        <div id="emptyMovements" class="empty-state"><span class="empty-icon">◌</span><p>No hay gastos, sueldos ni retiros registrados hoy.</p></div>
+        <details id="auditSection" style="margin-top:18px"><summary>Historial de auditoría</summary><ul id="auditList" class="entity-list" style="margin-top:8px"></ul></details>
+      </section>
+
+      <section class="panel" id="agenda" style="margin-top:25px">
+        <div class="panel-heading"><div><p class="eyebrow">AGENDA MANUAL</p><h2>Próximas citas</h2></div><button id="showAppointmentForm" class="primary" type="button">+ Crear cita</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Fecha y hora</th><th>Clienta</th><th>Servicio estimado</th><th>Profesional</th><th>Estado</th><th></th></tr></thead><tbody id="appointmentsTable"></tbody></table></div>
+        <div id="emptyAppointments" class="empty-state"><span class="empty-icon">◷</span><p>Aún no hay citas programadas.</p><button id="emptyAppointment" class="secondary" type="button">Crear la primera cita</button></div>
+      </section>
+
+      <section class="panel" id="clientes-panel" style="margin-top:25px">
+        <div class="panel-heading"><div><p class="eyebrow">RELACIÓN CON CLIENTAS</p><h2>Clientas</h2></div><p class="muted panel-note">Historial generado desde tus citas y atenciones.</p></div>
+        <div class="table-wrap"><table><thead><tr><th>Clienta</th><th>Contacto</th><th>Visitas</th><th>Última visita</th><th>Inversión acumulada</th><th>Profesional habitual</th></tr></thead><tbody id="clientsTable"></tbody></table></div>
+        <div id="emptyClients" class="empty-state"><span class="empty-icon">♧</span><p>Las clientas aparecerán aquí al crear una cita.</p></div>
+      </section>
+
+      <section class="panel" id="reportes" style="margin-top:25px">
+        <div class="panel-heading"><div><p class="eyebrow">RESUMEN SEMANAL</p><h2 id="weekTitle">Esta semana</h2></div><button id="exportCsv" class="secondary excel-download" type="button"><span class="excel-icon" aria-hidden="true">X</span> Exportar ZIP</button></div>
+        <div class="metrics">
+          <article><span>Ventas confirmadas</span><strong id="weeklySales">$0</strong></article>
+          <article><span>Cobros recibidos</span><strong id="weeklyPayments">$0</strong></article>
+          <article><span>Saldo pendiente</span><strong id="weeklyPending">$0</strong></article>
+          <article><span>Retiros de dueña</span><strong id="weeklyWithdrawals">$0</strong></article>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>Profesional</th><th>Atenciones</th><th>Ventas</th><th>Comisión devengada</th><th>Comisión pagada</th><th>Por pagar*</th><th>Participación local</th></tr></thead><tbody id="professionalReportTable"></tbody></table></div>
+        <p class="small">*Por pagar es una referencia del período: comisión devengada menos pagos de comisión registrados esa semana.</p>
+      </section>
+
+      <div class="two-columns">
+        <section class="panel" id="profesionales">
+          <div class="panel-heading"><div><p class="eyebrow">CONFIGURACIÓN</p><h2>Profesionales</h2></div></div>
+          <ul id="professionalsList" class="entity-list"></ul>
+          <form id="professionalForm" class="inline-form">
+            <input id="professionalName" required maxlength="60" placeholder="Nombre de profesional" aria-label="Nombre de profesional" />
+            <input id="professionalShare" required type="number" min="0" max="100" step="0.01" value="50" aria-label="Porcentaje de comisión" />
+            <button class="secondary" type="submit">Agregar</button>
+          </form>
+        </section>
+        <section class="panel" id="servicios">
+          <div class="panel-heading"><div><p class="eyebrow">CATÁLOGO</p><h2>Servicios</h2></div></div>
+          <ul id="catalogList" class="entity-list"></ul>
+          <form id="catalogForm" class="inline-form catalog-form">
+            <input id="catalogName" required maxlength="60" placeholder="Nombre del servicio" aria-label="Nombre del servicio" />
+            <input id="catalogPrice" required type="number" min="0" step="1" placeholder="Precio CLP" aria-label="Precio de referencia en CLP" />
+            <button class="secondary" type="submit">Agregar</button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <dialog id="serviceDialog">
+      <form id="serviceForm" method="dialog">
+        <div class="dialog-header"><div><p class="eyebrow">NUEVA ATENCIÓN</p><h2>Registrar servicio realizado</h2></div><button id="closeDialog" class="icon-button" type="button" aria-label="Cerrar">×</button></div>
+        <p class="muted">Solo necesitamos lo esencial. Podrás ajustar los detalles si hace falta.</p>
+        <p id="serviceAppointmentContext" class="small" style="margin-top:10px"></p>
+        <div class="form-grid">
+          <label><span class="step-label">1 · Servicio</span><select id="serviceCatalog" required></select></label>
+          <label><span class="step-label">2 · Profesional</span><select id="serviceProfessional" required></select></label>
+          <label><span class="step-label">3 · Precio final</span><input id="listPrice" type="number" min="0" step="1" required /></label>
+        </div>
+        <details class="advanced-options"><summary>Más opciones</summary><div class="form-grid"><label>Descuento (CLP)<input id="discount" type="number" min="0" step="1" value="0" required /></label><label>Porcentaje de comisión<input id="share" type="number" min="0" max="100" step="0.01" required /></label><label>Materiales<select id="materials"><option value="LOCAL">Los aporta el local</option><option value="PROFESIONAL">Los aporta la profesional</option><option value="MIXTO">Aporte mixto</option></select></label></div></details>
+        <div class="calculation" aria-live="polite"><span>Precio final <strong id="previewFinal">$0</strong></span><span>Comisión <strong id="previewCommission">$0</strong></span><span>Local <strong id="previewStudio">$0</strong></span></div>
+        <p id="formError" class="error" role="alert"></p>
+        <div class="dialog-actions"><button id="cancelDialog" class="secondary" type="button">Cancelar</button><button id="confirmService" class="primary" type="submit">Confirmar atención</button></div>
+      </form>
+    </dialog>
+    <dialog id="paymentDialog">
+      <form id="paymentForm">
+        <div class="dialog-header"><div><p class="eyebrow">REGISTRAR COBRO</p><h2 id="paymentTitle">Cobro de atención</h2></div><button id="closePaymentDialog" class="icon-button" type="button" aria-label="Cerrar">×</button></div>
+        <p id="paymentSummary" class="muted"></p>
+        <div class="form-grid">
+          <label>Monto recibido (CLP)<input id="paymentAmount" type="number" min="1" step="1" required /></label>
+          <label>Medio de pago<select id="paymentMethod"><option value="EFECTIVO">Efectivo</option><option value="TRANSFERENCIA">Transferencia</option><option value="TARJETA">Tarjeta</option><option value="OTRO">Otro</option></select></label>
+        </div>
+        <p id="paymentError" class="error" role="alert"></p>
+        <div class="dialog-actions"><button id="cancelPaymentDialog" class="secondary" type="button">Cancelar</button><button class="primary" type="submit">Registrar cobro</button></div>
+      </form>
+    </dialog>
+    <dialog id="movementDialog">
+      <form id="movementForm">
+        <div class="dialog-header"><div><p class="eyebrow">NUEVA SALIDA</p><h2>Registrar movimiento</h2></div><button id="closeMovementDialog" class="icon-button" type="button" aria-label="Cerrar">×</button></div>
+        <p class="muted">Los retiros de dueña reducen caja, pero no el resultado operativo.</p>
+        <div class="form-grid">
+          <label>Tipo<select id="movementType"><option value="OPERATING_EXPENSE">Gasto operativo</option><option value="ADMIN_SALARY">Sueldo administrativo</option><option value="OWNER_WITHDRAWAL">Retiro de dueña</option></select></label>
+          <label>Monto (CLP)<input id="movementAmount" type="number" min="1" step="1" required /></label>
+          <label>Medio<select id="movementMethod"><option value="EFECTIVO">Efectivo</option><option value="TRANSFERENCIA">Transferencia</option><option value="TARJETA">Tarjeta</option><option value="OTRO">Otro</option></select></label>
+          <label>Descripción<input id="movementNote" maxlength="120" placeholder="Ej. compra de esmaltes" /></label>
+        </div>
+        <label style="display:flex;align-items:center;gap:8px;font-weight:500"><input id="movementPaid" type="checkbox" checked /> Salida de dinero efectuada hoy</label>
+        <p id="movementError" class="error" role="alert"></p>
+        <div class="dialog-actions"><button id="cancelMovementDialog" class="secondary" type="button">Cancelar</button><button class="primary" type="submit">Registrar movimiento</button></div>
+      </form>
+    </dialog>
+    <dialog id="closureDialog">
+      <form id="closureForm">
+        <div class="dialog-header"><div><p class="eyebrow" id="closureEyebrow">CIERRE DIARIO</p><h2 id="closureTitle">Cerrar día</h2></div><button id="closeClosureDialog" class="icon-button" type="button" aria-label="Cerrar">×</button></div>
+        <p id="closureDescription" class="muted"></p>
+        <div id="closureSummary" class="closure-summary"></div>
+        <label style="margin-top:20px">Motivo o nota<input id="closureReason" maxlength="240" placeholder="Describe el motivo" /></label>
+        <p id="closureError" class="error" role="alert"></p>
+        <div class="dialog-actions"><button id="cancelClosureDialog" class="secondary" type="button">Cancelar</button><button id="confirmClosure" class="primary" type="submit">Confirmar</button></div>
+      </form>
+    </dialog>
+    <dialog id="appointmentDialog">
+      <form id="appointmentForm">
+        <div class="dialog-header"><div><p class="eyebrow">NUEVA CITA</p><h2>Agendar atención</h2></div><button id="closeAppointmentDialog" class="icon-button" type="button" aria-label="Cerrar">×</button></div>
+        <p class="muted">Una cita es solo una reserva: no genera venta ni comisión.</p>
+        <div class="form-grid">
+          <label>Nombre de clienta<input id="clientName" maxlength="80" required placeholder="Ej. Camila Rojas" /></label>
+          <label>Contacto (opcional)<input id="clientContact" maxlength="50" placeholder="Teléfono o WhatsApp" /></label>
+          <label>Fecha<input id="appointmentDate" type="date" required /></label>
+          <label>Hora<input id="appointmentTime" type="time" required /></label>
+          <label>Servicio estimado<select id="appointmentCatalog" required></select></label>
+          <label>Profesional<select id="appointmentProfessional" required></select></label>
+        </div>
+        <p id="appointmentError" class="error" role="alert"></p>
+        <div class="dialog-actions"><button id="cancelAppointmentDialog" class="secondary" type="button">Cancelar</button><button class="primary" type="submit">Crear cita</button></div>
+      </form>
+    </dialog>
+    <script src="dev-config.js"></script>
+    <script src="app.js?v=20260928-4"></script>
+  </body>
+</html>
